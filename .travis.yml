@@ -15,4 +15,20 @@ script:
   - docker run -e CI=true nsovomashaba/docker-react npm run test -- --coverage
 
 
+deploy:
+  provider: elasticbeanstalk
+   #aws region where the container is located, DockerReact-env.eba-8xqfk7i4.us-east-2.elasticbeanstalk.com
+  region: "us-east-2"
+  app: "docker-react"              
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-679308915134"
+  bucket_path: "docker-react"
+  #only attempt to deploy when we push code to master
+  on: 
+    branch: master
+     #generate API keys on aws - use travic CI to store the key do not store this in the file 
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+ 
 
