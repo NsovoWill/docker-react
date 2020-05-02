@@ -1,0 +1,25 @@
+version : "3"
+services: 
+  react-webapp:
+    build:          #we cannot use the build: . as the file name ends with .dev
+      context: .    #the context is the current working directory
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app    #the . is for the current folder
+    environment:
+      - CI=true #because in the docker run we have to specify -e CI=true
+      - CHOKIDAR_USEPOLLING=true  
+
+  tests:
+    build:          #we cannot use the build: . as the file name ends with .dev
+      context: .    #the context is the current working directory
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules #prevents the override of the nodes directory
+      - .:/app    #the . is for the current folder
+
+
+    command: ["npm", "run", "test"] #overrides the Dockerfile.dev command
