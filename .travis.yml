@@ -8,9 +8,11 @@ services:
 before_install:
   -  docker build -t nsovomashaba/docker-react -f Dockerfile.dev .               
 
+env: 
+  - CI=true
 #-- --coverage ensures that the npm run test ends after running once 
 script:
-  - docker run nsovomashaba/docker-react npm run test -- --coverage
+  - docker run nsovomashaba/docker-react CI=true npm run test -- --coverage
 
 
 
