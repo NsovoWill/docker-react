@@ -28,8 +28,8 @@ deploy:
     branch: master
      #generate API keys on aws - use travic CI to store the key do not store this in the file 
   access_key_id: 
-    secure: "AWS_ACCESS_KEY"
+    secure: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
  
 
