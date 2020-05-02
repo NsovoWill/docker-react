@@ -12,7 +12,7 @@ env:
   - CI=true
 #-- --coverage ensures that the npm run test ends after running once 
 script:
-  - docker run nsovomashaba/docker-react npm run test -- --coverage
+  - docker run -e CI=true nsovomashaba/docker-react npm run test -- --coverage
 
 
 
