@@ -32,5 +32,6 @@ deploy:
      #generate API keys on aws - use travic CI to store the key do not store this in the file 
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
+    #secure : $AWS_SECRET_KEY is used only when we have encrypted our keys and etc see: https://docs.travis-ci.com/user/environment-variables/ and https://docs.travis-ci.com/user/encryption-keys#usage
  
 
