@@ -1,0 +1,16 @@
+#We require sudo access
+sudo: required     
+#add docker to container created
+services: 
+  - docker
+
+#instruct travis to create a docker file with our Dockerfile.dev
+before_install:
+  -  docker build -t nsovomashaba/docker-react -f Dockerfile.dev .               
+
+#-- --coverage ensures that the npm run test ends after running once 
+script:
+  - docker run nsovomashaba/docker-react npm run test -- --coverage
+
+
+
